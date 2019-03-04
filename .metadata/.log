@@ -2714,3 +2714,9 @@ java.net.ConnectException: Connection refused: connect
 
 !ENTRY org.eclipse.emf.validation 2 70 2019-03-04 22:54:52.613
 !MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.ssl.editor.com.tibco.trinity.ssl.editor.invalid.remote.host.constraint" could not find target EMF type "SSLServerConfiguration."
+
+!ENTRY org.eclipse.emf.validation 2 70 2019-03-04 23:15:02.048
+!MESSAGE Constraint "com.tibco.amf.design.sr.core.internal.validation.constraints.SharedResourceNotInWorkspace" could not find target EMF type "Property."
+
+!ENTRY org.eclipse.bpel.validator 1 0 2019-03-04 23:22:10.615
+!MESSAGE Validator Startup 39ms
