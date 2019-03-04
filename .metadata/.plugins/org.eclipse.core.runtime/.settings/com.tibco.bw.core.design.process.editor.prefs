@@ -1,0 +1,9 @@
+//com.cts.sample.rest.products/Processes/com/cts/sample/rest/products/Products.bwp.displayer.openstate=1
+//com.cts.sample.rest.products/Processes/com/cts/sample/rest/products/Products.bwp.favorite.expansionstate=1
+//com.cts.sample.rest.products/Processes/com/cts/sample/rest/products/Products.bwp.library.expansionstate=0
+//com.cts.sample.rest.products/Processes/com/cts/sample/rest/products/Products.bwp.recent.expansionstate=1
+com.tibco.bw.core.design.process.editor.numofvirtualpalettes=0
+eclipse.preferences.version=1
+global.favorite_palette_size=0
+global.recent_palette_capacity=8
+global.recent_palette_size=0
