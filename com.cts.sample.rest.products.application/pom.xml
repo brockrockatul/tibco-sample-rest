@@ -74,7 +74,7 @@
               <run>
                 <namingStrategy>alias</namingStrategy>
                   <env>
-                    <BW_APP_MONITORING_CONFIG>{\"url\":\"http://10.242.31.54:9091\"}</BW_APP_MONITORING_CONFIG>
+                    <BW_APP_MONITORING_CONFIG>{"url":"http://10.242.31.54:9091"}</BW_APP_MONITORING_CONFIG>
                     <CATALINA_OPTS>-Djava.security.egd=file:/dev/./urandom</CATALINA_OPTS>
                   </env>
                 <ports>
