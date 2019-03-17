@@ -991,6 +991,8 @@
             namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns2"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/bw/xslt/custom-functions" prefix="tib"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/json/1551719105149" prefix="tns3"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1551719264944"/>
@@ -1010,6 +1012,9 @@
         <bpws:variable messageType="ns0:getResponse" name="getOut-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:ActivityInput" name="Log1-input" sca-bpel:internal="true"/>
+        <bpws:variable name="GLB_AppName" sca-bpel:hotUpdate="false"
+            sca-bpel:privateProperty="true" sca-bpel:property="yes"
+            tibex:propertySource="/AppParameter/GLB_AppName" type="xsd:string"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1052,7 +1057,7 @@
                             </bpws:reply>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tib=&quot;http://www.tibco.com/bw/xslt/custom-functions&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1551719105149&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;post&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;Product received&amp;quot;,tib:render-xml($post/item/tns:AddProductInputElement))&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/json/1551719105149&quot; xmlns:tib=&quot;http://www.tibco.com/bw/xslt/custom-functions&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;post&quot;/>&lt;xsl:param name=&quot;GLB_AppName&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;AppName:&amp;quot;,$GLB_AppName,&amp;quot;Product received&amp;quot;,tib:render-xml($post/item/tns3:AddProductInputElement))&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
                                     inputVariable="Log-input" name="Log"
                                     tibex:xpdlId="f981e0d0-8415-4237-832e-0c70ce5ead74" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
@@ -1061,7 +1066,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tib=&quot;http://www.tibco.com/bw/xslt/custom-functions&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1551719105149&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;post.item&quot;/>&#xa;    &lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:ActivityInput>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;Product received&amp;quot;,tib:render-xml($post.item))&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns2:ActivityInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/json/1551719105149&quot; xmlns:tib=&quot;http://www.tibco.com/bw/xslt/custom-functions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;post.item&quot;/>&#xa;    &lt;xsl:param name=&quot;GLB_AppName&quot;/>&#xa;    &lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:ActivityInput>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;AppName:&amp;quot;,$GLB_AppName,&amp;quot;Product received&amp;quot;,tib:render-xml($post.item))&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns2:ActivityInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1104,10 +1109,61 @@
                                 tibex:xpdlId="6a033bbf-dc1b-4526-8c1f-4f700229ea77" variable="getOut-input">
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20190304222520PLT&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/json/1551719105149&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:AddProductInputElement>&#xa;            &lt;tns1:products>&#xa;                &lt;tns1:id>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;P001&amp;quot;&quot;/>&#xa;                &lt;/tns1:id>&#xa;                &lt;tns1:name>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Apple&amp;quot;&quot;/>&#xa;                &lt;/tns1:name>&#xa;                &lt;tns1:price>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;500$&amp;quot;&quot;/>&#xa;                &lt;/tns1:price>&#xa;                &lt;tns1:catagory>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Fruites&amp;quot;&quot;/>&#xa;                &lt;/tns1:catagory>&#xa;            &lt;/tns1:products>&#xa;            &lt;tns1:products>&#xa;                &lt;tns1:id>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;P002&amp;quot;&quot;/>&#xa;                &lt;/tns1:id>&#xa;                &lt;tns1:name>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Orange&amp;quot;&quot;/>&#xa;                &lt;/tns1:name>&#xa;                &lt;tns1:price>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;200$&amp;quot;&quot;/>&#xa;                &lt;/tns1:price>&#xa;                &lt;tns1:catagory>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Fruites&amp;quot;&quot;/>&#xa;                &lt;/tns1:catagory>&#xa;            &lt;/tns1:products>&#xa;            &lt;tns1:products>&#xa;                &lt;tns1:id>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;P003&amp;quot;&quot;/>&#xa;                &lt;/tns1:id>&#xa;                &lt;tns1:name>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Nokia-N73&amp;quot;&quot;/>&#xa;                &lt;/tns1:name>&#xa;                &lt;tns1:price>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;13000$&amp;quot;&quot;/>&#xa;                &lt;/tns1:price>&#xa;                &lt;tns1:catagory>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Mobile&amp;quot;&quot;/>&#xa;                &lt;/tns1:catagory>&#xa;            &lt;/tns1:products>&#xa;        &lt;/tns1:AddProductInputElement>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20190304222520PLT&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/json/1551719105149&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:AddProductInputElement>&#xa;            &lt;tns3:products>&#xa;                &lt;tns3:id>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;P001&amp;quot;&quot;/>&#xa;                &lt;/tns3:id>&#xa;                &lt;tns3:name>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Apple&amp;quot;&quot;/>&#xa;                &lt;/tns3:name>&#xa;                &lt;tns3:price>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;500$&amp;quot;&quot;/>&#xa;                &lt;/tns3:price>&#xa;                &lt;tns3:catagory>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Fruites&amp;quot;&quot;/>&#xa;                &lt;/tns3:catagory>&#xa;            &lt;/tns3:products>&#xa;            &lt;tns3:products>&#xa;                &lt;tns3:id>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;P002&amp;quot;&quot;/>&#xa;                &lt;/tns3:id>&#xa;                &lt;tns3:name>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Orange&amp;quot;&quot;/>&#xa;                &lt;/tns3:name>&#xa;                &lt;tns3:price>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;200$&amp;quot;&quot;/>&#xa;                &lt;/tns3:price>&#xa;                &lt;tns3:catagory>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Fruites&amp;quot;&quot;/>&#xa;                &lt;/tns3:catagory>&#xa;            &lt;/tns3:products>&#xa;            &lt;tns3:products>&#xa;                &lt;tns3:id>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;P003&amp;quot;&quot;/>&#xa;                &lt;/tns3:id>&#xa;                &lt;tns3:name>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Nokia-N73&amp;quot;&quot;/>&#xa;                &lt;/tns3:name>&#xa;                &lt;tns3:price>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;13000$&amp;quot;&quot;/>&#xa;                &lt;/tns3:price>&#xa;                &lt;tns3:catagory>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;Mobile&amp;quot;&quot;/>&#xa;                &lt;/tns3:catagory>&#xa;            &lt;/tns3:products>&#xa;        &lt;/tns3:AddProductInputElement>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20190304222520PLT" xmlns:tns1="http://tns.tibco.com/bw/json/1551719105149" version="2.0"&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns:getResponse&gt;&lt;item&gt;&lt;tns1:AddProductInputElement&gt;&lt;tns1:products&gt;&lt;tns1:id&gt;&lt;xsl:value-of select="&amp;quot;P001&amp;quot;"/&gt;&lt;/tns1:id&gt;&lt;tns1:name&gt;&lt;xsl:value-of select="&amp;quot;Apple&amp;quot;"/&gt;&lt;/tns1:name&gt;&lt;tns1:price&gt;&lt;xsl:value-of select="&amp;quot;500$&amp;quot;"/&gt;&lt;/tns1:price&gt;&lt;tns1:catagory&gt;&lt;xsl:value-of select="&amp;quot;Fruites&amp;quot;"/&gt;&lt;/tns1:catagory&gt;&lt;/tns1:products&gt;&lt;tns1:products&gt;&lt;tns1:id&gt;&lt;xsl:value-of select="&amp;quot;P002&amp;quot;"/&gt;&lt;/tns1:id&gt;&lt;tns1:name&gt;&lt;xsl:value-of select="&amp;quot;Orange&amp;quot;"/&gt;&lt;/tns1:name&gt;&lt;tns1:price&gt;&lt;xsl:value-of select="&amp;quot;200$&amp;quot;"/&gt;&lt;/tns1:price&gt;&lt;tns1:catagory&gt;&lt;xsl:value-of select="&amp;quot;Fruites&amp;quot;"/&gt;&lt;/tns1:catagory&gt;&lt;/tns1:products&gt;&lt;tns1:products&gt;&lt;tns1:id&gt;&lt;xsl:value-of select="&amp;quot;P003&amp;quot;"/&gt;&lt;/tns1:id&gt;&lt;tns1:name&gt;&lt;xsl:value-of select="&amp;quot;Nokia-N73&amp;quot;"/&gt;&lt;/tns1:name&gt;&lt;tns1:price&gt;&lt;xsl:value-of select="&amp;quot;13000$&amp;quot;"/&gt;&lt;/tns1:price&gt;&lt;tns1:catagory&gt;&lt;xsl:value-of select="&amp;quot;Mobile&amp;quot;"/&gt;&lt;/tns1:catagory&gt;&lt;/tns1:products&gt;&lt;/tns1:AddProductInputElement&gt;&lt;/item&gt;&lt;/tns:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20190304222520PLT" xmlns:tns3="http://tns.tibco.com/bw/json/1551719105149" version="2.0"&gt;
+    &lt;xsl:template name="getOut-input" match="/"&gt;
+        &lt;tns:getResponse&gt;
+            &lt;item&gt;
+                &lt;tns3:AddProductInputElement&gt;
+                    &lt;tns3:products&gt;
+                        &lt;tns3:id&gt;
+                            &lt;xsl:value-of select="&amp;quot;P001&amp;quot;"/&gt;
+                        &lt;/tns3:id&gt;
+                        &lt;tns3:name&gt;
+                            &lt;xsl:value-of select="&amp;quot;Apple&amp;quot;"/&gt;
+                        &lt;/tns3:name&gt;
+                        &lt;tns3:price&gt;
+                            &lt;xsl:value-of select="&amp;quot;500$&amp;quot;"/&gt;
+                        &lt;/tns3:price&gt;
+                        &lt;tns3:catagory&gt;
+                            &lt;xsl:value-of select="&amp;quot;Fruites&amp;quot;"/&gt;
+                        &lt;/tns3:catagory&gt;
+                    &lt;/tns3:products&gt;
+                    &lt;tns3:products&gt;
+                        &lt;tns3:id&gt;
+                            &lt;xsl:value-of select="&amp;quot;P002&amp;quot;"/&gt;
+                        &lt;/tns3:id&gt;
+                        &lt;tns3:name&gt;
+                            &lt;xsl:value-of select="&amp;quot;Orange&amp;quot;"/&gt;
+                        &lt;/tns3:name&gt;
+                        &lt;tns3:price&gt;
+                            &lt;xsl:value-of select="&amp;quot;200$&amp;quot;"/&gt;
+                        &lt;/tns3:price&gt;
+                        &lt;tns3:catagory&gt;
+                            &lt;xsl:value-of select="&amp;quot;Fruites&amp;quot;"/&gt;
+                        &lt;/tns3:catagory&gt;
+                    &lt;/tns3:products&gt;
+                    &lt;tns3:products&gt;
+                        &lt;tns3:id&gt;
+                            &lt;xsl:value-of select="&amp;quot;P003&amp;quot;"/&gt;
+                        &lt;/tns3:id&gt;
+                        &lt;tns3:name&gt;
+                            &lt;xsl:value-of select="&amp;quot;Nokia-N73&amp;quot;"/&gt;
+                        &lt;/tns3:name&gt;
+                        &lt;tns3:price&gt;
+                            &lt;xsl:value-of select="&amp;quot;13000$&amp;quot;"/&gt;
+                        &lt;/tns3:price&gt;
+                        &lt;tns3:catagory&gt;
+                            &lt;xsl:value-of select="&amp;quot;Mobile&amp;quot;"/&gt;
+                        &lt;/tns3:catagory&gt;
+                    &lt;/tns3:products&gt;
+                &lt;/tns3:AddProductInputElement&gt;
+            &lt;/item&gt;
+        &lt;/tns:getResponse&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <bpws:targets>
                                     <bpws:target linkName="Log1TogetOut"/>
                                 </bpws:targets>

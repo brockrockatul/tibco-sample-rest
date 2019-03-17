@@ -27,6 +27,7 @@
   <sca:property xmi:id="_ULhIAD6eEemIr8sgHXY69g" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_bGCDED6eEemIr8sgHXY69g" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
   <sca:property xmi:id="_hNUqED6hEemIr8sgHXY69g" name="/HTTP/GLB_Port" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_i40DkEdJEemqY9eOPcWvgA" name="/AppParameter/GLB_AppName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_Tdtm0D6eEemIr8sgHXY69g" name="ComponentProducts" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_TduN4D6eEemIr8sgHXY69g" processName="com.cts.sample.rest.products.Products"/>
     <sca:service xmi:id="_wU_UID6eEemIr8sgHXY69g" name="prd-manageProduct">

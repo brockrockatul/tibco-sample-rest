@@ -6,4 +6,8 @@
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 	</section>
+	<section name="RefactoringWizard.Externalize Strings">
+		<item value="1536" key="width"/>
+		<item value="635" key="height"/>
+	</section>
 </section>
