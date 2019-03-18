@@ -74,7 +74,11 @@
               <run>
                 <namingStrategy>alias</namingStrategy>
                   <env>
-                    <BW_APP_MONITORING_CONFIG>{"url":"http://10.242.31.54:9091"}</BW_APP_MONITORING_CONFIG>
+                      <BW_APP_MONITORING_CONFIG>{"url":"http://10.242.31.54:9091"}</BW_APP_MONITORING_CONFIG>
+                      <CONSUL_SERVER_URL>http://10.242.31.54:8500</CONSUL_SERVER_URL>
+                      <APP_CONFIG_PROFILE>Docker</APP_CONFIG_PROFILE>
+                      <BW_LOGLEVEL>INFO</BW_LOGLEVEL>
+                      <BW_PROFILE>Docker</BW_PROFILE>
                   </env>
                 <ports>
                   <port>${bwdocker.port.p0}</port>
