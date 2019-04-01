@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tibco-sapmle-rest
+  labels:
+    app: tibco-sapmle-rest
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: tibco-sapmle-rest
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: tibco-sapmle-rest
+spec:
+  replicas: 1
+  selector:
+    app: tibco-sapmle-rest
+  template:
+    metadata:
+      name: tibco-sapmle-rest
+      labels:
+        app: tibco-sapmle-rest
+    spec:
+      containers:
+        - name: tibco-sapmle-rest
+          image:  biman/tibco-sapmle-rest:V13
+          imagePullPolicy: Always
+          env:
+          - name: BW_LOGLEVEL
+            value: "ERROR"
+          - name: BW_PROFILE
+            value: "default"
+          ports:
+            - containerPort: 8080
