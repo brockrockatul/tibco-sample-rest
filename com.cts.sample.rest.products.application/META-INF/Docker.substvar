@@ -91,7 +91,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//com.cts.sample.rest.products///AppParameter/GLB_AppName</name>
-			<value>#APP_NAME#</value>
+			<value>Rest Demo Service</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
