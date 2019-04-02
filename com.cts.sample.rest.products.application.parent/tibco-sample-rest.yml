@@ -34,11 +34,11 @@ spec:
           - name: BW_LOGLEVEL
             value: "ERROR"
           - name: BW_PROFILE
-            value: "docker"
+            value: docker
           - name: APP_NAME
             valueFrom:
               configMapKeyRef:
-                name: product-config
+                name: default/product-config
                 key: APP_NAME
           ports:
             - containerPort: 8080
