@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: tibco-sample-rest
-          image:  biman/tibco-sample-rest:V14
+          image:  biman/tibco-sample-rest:latest
           imagePullPolicy: Always
           env:
           - name: BW_LOGLEVEL
