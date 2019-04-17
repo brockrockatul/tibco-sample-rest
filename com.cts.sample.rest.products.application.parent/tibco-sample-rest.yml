@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: tibco-sample-rest
-          image:  biman/tibco-sample-rest:latest
+          image:  717904358179.dkr.ecr.us-east-2.amazonaws.com/tibco-sample-rest:latest
           imagePullPolicy: Always
           env:
           - name: BW_LOGLEVEL
